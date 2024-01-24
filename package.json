@@ -1,0 +1,22 @@
+{
+  "name": "release-recipe",
+  "version": "1.0.0",
+  "description": "This is a demo application to show a release process.",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wulfland/release-recipe.git"
+  },
+  "author": "Michael Kaufmann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wulfland/release-recipe/issues"
+  },
+  "homepage": "https://github.com/wulfland/release-recipe#readme",
+  "dependencies": {
+    "@wulfland/package-recipe": "^1.0.5"
+  }
+}
