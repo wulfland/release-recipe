@@ -1,9 +1,10 @@
 const express = require('express');
+const greet = require('@wulfland/package-recipe/src/index')
 const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send(greet());
 });
 
 app.listen(port, () => {
