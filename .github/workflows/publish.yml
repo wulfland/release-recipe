@@ -44,6 +44,18 @@ jobs:
             type=semver,pattern={{major}}
             type=sha
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 21.x
+          registry-url: https://npm.pkg.github.com/
+
+      - name: Build and test
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm install
+          npm run test
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
