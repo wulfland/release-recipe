@@ -18,7 +18,4 @@ spec:
         image: ghcr.io/wulfland/release-recipe:sha-412aecc
         ports:
         - containerPort: 3000
-        env:
-          - name: PORT
-            value: "80"
             
