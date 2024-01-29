@@ -9,8 +9,8 @@ on:
 env:
   REGISTRY: 'ghcr.io'
   IMAGE_NAME: '${{ github.repository }}'
-  APP_NAME: 'relelase-recipe-app'
-  SERVICE_NAME: 'relelase-recipe-service'
+  APP_NAME: 'release-recipe-app'
+  SERVICE_NAME: 'release-recipe-service'
 
 jobs:
   build-and-push-image:
