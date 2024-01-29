@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: $APP_NAME
-        image: ghcr.io/wulfland/release-recipe:$IMAGE_TAG
+        image: $IMAGE
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
