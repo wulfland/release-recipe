@@ -91,16 +91,27 @@ jobs:
         with:
           cluster-name: ${{ secrets.AZURE_CLUSTER_NAME }}
           resource-group: ${{ secrets.AZURE_RESOURCE_GROUP }}
-   
-      - name: 'Get Service URL'
-        id: get-service-url
-        run: |
-          IP=$(kubectl describe service $SERVICE_NAME| grep "LoadBalancer Ingress: " | awk '{print $3}')
-          echo "SERVICE_URL=http://$IP" >> $GITHUB_OUTPUT
-
+      
       - name: Deploy
         env:
           IMAGE: ${{ needs.build-and-push-image.outputs.image_tag }}
         run: |-
           envsubst < service.yml | kubectl apply -f -
           envsubst < deployment.yml | kubectl apply -f -
+   
+      - name: 'Get Service URL'
+        id: get-service-url
+        run: |
+          IP=$(kubectl describe service $SERVICE_NAME| grep "LoadBalancer Ingress: " | awk '{print $3}')
+          echo "SERVICE_URL=http://$IP" >> $GITHUB_OUTPUT
+      
+      - name: 'Run smoke test'
+        env:
+          SERVICE_URL: ${{ steps.get-service-url.outputs.SERVICE_URL}}
+        run: |
+          status=`curl -s --head $SERVICE_URL | head -1 | cut -f 2 -d' '`
+          if [ "$status" != "200" ]
+          then
+            echo "Wrong HTTP Status. Actual: '$status'"
+            exit 1
+          fi
