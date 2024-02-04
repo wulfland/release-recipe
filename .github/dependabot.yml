@@ -13,3 +13,13 @@ updates:
       interval: "weekly"
     registries:
       - npm-pkg
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
