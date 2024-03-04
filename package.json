@@ -19,6 +19,6 @@
   "homepage": "https://github.com/wulfland/release-recipe#readme",
   "dependencies": {
     "@wulfland/package-recipe": "^2.1.2",
-    "express": "^4.18.2"
+    "express": "^4.18.3"
   }
 }
